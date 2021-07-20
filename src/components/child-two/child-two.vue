@@ -17,7 +17,7 @@ const { mapState, mapActions } = createNamespacedHelpers(name);
 
 export default Vue.extend({
   name,
-  comptwonts: {
+  components: {
     'grand-child-two': GranChildTwo,
   },
   computed: {

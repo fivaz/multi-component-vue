@@ -8,7 +8,7 @@ window.dispatchEvent(new MessageEvent("message", {data:{component:"grand-child-o
 //open child 2
 window.dispatchEvent(new MessageEvent("message", {data:{component:"child-two", action:"changeComponent"}}));
 //open grand child 3
-window.dispatchEvent(new MessageEvent("message", {data:{component:"child-two", action:"openGrandChildThree"}}));
+window.dispatchEvent(new MessageEvent("message", {data:{component:"child-two", action:"openGrandChildTwo"}}));
 //send grand child 3 data
-window.dispatchEvent(new MessageEvent("message", {data:{component:"grand-child-three", action:"setBar", payload:['1','2','3']}}));
+window.dispatchEvent(new MessageEvent("message", {data:{component:"grand-child-two", action:"setBar", payload:[1,2,3]}}));
 

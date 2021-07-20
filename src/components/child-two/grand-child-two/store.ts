@@ -2,7 +2,7 @@ import { Module } from 'vuex';
 import { RootState } from '@/store/root-state';
 
 export interface State {
-    bar: string[]
+    bar: number[]
 }
 
 export default <Module<State, RootState>>{
@@ -11,12 +11,12 @@ export default <Module<State, RootState>>{
         bar: [],
     }),
     mutations: {
-        SET_BAR(state, payload: string[]) {
+        SET_BAR(state, payload: number[]) {
             state.bar = payload;
         },
     },
     actions: {
-        setBar(context, payload: string[]) {
+        setBar(context, payload: number[]) {
             context.commit('SET_BAR', payload);
         },
     },
