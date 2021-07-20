@@ -8,28 +8,34 @@
 <script lang="ts">
 import Vue from 'vue';
 import GranChildOne from './grand-child-one/grand-child-one.vue'
-import { createNamespacedHelpers } from 'vuex';
-import childOneModule from './store';
+import emitter from '@/event-emitter'
 
 const name = 'child-one';
-const { mapState, mapActions } = createNamespacedHelpers(name)
 
 export default Vue.extend({
   name,
   components: {
     'grand-child-one': GranChildOne,
   },
-  computed: {
-    ...mapState(['isGrandChildOneVisible', 'isGrandChildTwoVisible']),
+  data() {
+    return {
+      isGrandChildOneVisible: false,
+    };
   },
   methods: {
-    ...mapActions(['closeGrandChildOne', 'closeGrandChildTwo']),
+    openGrandChildOne() {
+      this.isGrandChildOneVisible = true;
+    },
   },
   beforeCreate() {
-    this.$store.registerModule(name, childOneModule);
+    emitter.on(name, ({action, payload}:any) => {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const x = this;
+      this[action as keyof typeof x](payload);
+    });
   },
   beforeDestroy() {
-    this.$store.unregisterModule(name);
+    emitter.off(name)
   },
 });
 </script>

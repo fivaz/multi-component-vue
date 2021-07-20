@@ -2,34 +2,38 @@
   <div>
     <h2>Grand Child one is open</h2>
     <ol>
-      <li v-for="item in list" :key="item">{{item}}</li>
+      <li v-for="item in list" :key="item">{{ item }}</li>
     </ol>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { createNamespacedHelpers } from 'vuex';
-import grandChildOneModule from './store';
+import emitter from '@/event-emitter'
 
-const name = 'child-one:grand-child-one';
-const { mapState, mapActions } = createNamespacedHelpers(name)
+const name = 'grand-child-one';
 
 export default Vue.extend({
   name: 'grand-child-one',
-  components: {
-  },
-  computed: {
-    ...mapState(['list']),
+  data(){
+    return {
+      list: [] as string[],
+    }
   },
   methods: {
-    ...mapActions(['setList']),
+    setList(payload: string[]) {
+      this.list = payload;
+    }
   },
   beforeCreate() {
-    this.$store.registerModule(name, grandChildOneModule);
+    emitter.on(name, ({action, payload}: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const x = this;
+      this[action as keyof typeof x](payload);
+    });
   },
   beforeDestroy() {
-    this.$store.unregisterModule(name);
+    emitter.off(name)
   },
 });
 </script>
