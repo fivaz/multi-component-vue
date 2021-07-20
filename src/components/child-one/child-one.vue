@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Child one is open</h1>
+    <button @click="closeGrandChildOne">close child one</button>
     <grand-child-one v-if="isGrandChildOneVisible"/>
   </div>
 </template>
@@ -20,10 +21,10 @@ export default Vue.extend({
     'grand-child-one': GranChildOne,
   },
   computed: {
-    ...mapState(['isGrandChildOneVisible', 'isGrandChildTwoVisible']),
+    ...mapState(['isGrandChildOneVisible']),
   },
   methods: {
-    ...mapActions(['closeGrandChildOne', 'closeGrandChildTwo']),
+    ...mapActions(['closeGrandChildOne']),
   },
   beforeCreate() {
     this.$store.registerModule(name, childOneModule);

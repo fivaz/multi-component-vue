@@ -2,22 +2,22 @@ import { Module } from 'vuex';
 import { RootState } from '@/store/root-state';
 
 export interface State {
-    foo: string[]
+    bar: string[]
 }
 
 export default <Module<State, RootState>>{
     namespaced: true,
     state: () => ({
-        foo: [],
+        bar: [],
     }),
     mutations: {
-        SET_FOO(state, payload: string[]) {
-            state.foo = payload;
+        SET_BAR(state, payload: string[]) {
+            state.bar = payload;
         },
     },
     actions: {
-        setFoo(context, payload: string[]) {
-            context.commit('SET_FOO', payload);
+        setBar(context, payload: string[]) {
+            context.commit('SET_BAR', payload);
         },
     },
 };
