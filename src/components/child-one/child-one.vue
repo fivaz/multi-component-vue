@@ -8,17 +8,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import GranChildOne from './grand-child-one/grand-child-one.vue'
-import emitter from '@/event-emitter'
+import EventHandler from '@/utils/EventHandler.vue';
 
 const name = 'child-one';
 
 export default Vue.extend({
   name,
+  mixins: [EventHandler],
   components: {
     'grand-child-one': GranChildOne,
   },
   data() {
     return {
+      componentName: name,
       isGrandChildOneVisible: false,
     };
   },
@@ -26,16 +28,6 @@ export default Vue.extend({
     openGrandChildOne() {
       this.isGrandChildOneVisible = true;
     },
-  },
-  beforeCreate() {
-    emitter.on(name, ({action, payload}:any) => {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const x = this;
-      this[action as keyof typeof x](payload);
-    });
-  },
-  beforeDestroy() {
-    emitter.off(name)
   },
 });
 </script>

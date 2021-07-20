@@ -16,7 +16,6 @@ export default Vue.extend({
     component: ''
   }),
   mounted() {
-
     window.addEventListener('message', ({data}: MessageEvent) => {
       const {component, action, payload} = data;
       if (action === 'changeComponent') {

@@ -9,14 +9,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import emitter from '@/event-emitter'
+import EventHandler from '@/utils/EventHandler.vue';
 
 const name = 'grand-child-one';
 
 export default Vue.extend({
   name: 'grand-child-one',
+  mixins:[EventHandler],
   data(){
     return {
+      componentName: name,
       list: [] as string[],
     }
   },
@@ -24,16 +26,6 @@ export default Vue.extend({
     setList(payload: string[]) {
       this.list = payload;
     }
-  },
-  beforeCreate() {
-    emitter.on(name, ({action, payload}: any) => {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const x = this;
-      this[action as keyof typeof x](payload);
-    });
-  },
-  beforeDestroy() {
-    emitter.off(name)
   },
 });
 </script>
