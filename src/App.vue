@@ -5,12 +5,14 @@
 <script lang="ts">
 import Vue from 'vue';
 import ChildOne from './components/child-one/child-one.vue';
+import ChildTwo from './components/child-two/child-two.vue';
 import emitter from './event-emitter'
 
 export default Vue.extend({
   name: 'App',
   components: {
     'child-one': ChildOne,
+    'child-two': ChildTwo,
   },
   data: () => ({
     component: ''

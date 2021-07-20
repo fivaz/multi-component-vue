@@ -20,7 +20,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      componentName: name,
+      name,
       isGrandChildOneVisible: false,
     };
   },
