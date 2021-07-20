@@ -4,13 +4,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Child1 from './components/child-1/Child1.vue';
+import ChildOne from './components/child-one/child-one.vue';
 import { mapState } from 'vuex';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    'child-1':Child1,
+    'child-one':ChildOne,
   },
   computed: {
     ...mapState(['component']),
