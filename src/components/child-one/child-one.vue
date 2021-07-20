@@ -19,12 +19,6 @@ export default Vue.extend({
   components: {
     'grand-child-one': GranChildOne,
   },
-  data() {
-    return {
-      name,
-      isGrandChildOneVisible: false,
-    };
-  },
   computed: {
     ...mapState(['isGrandChildOneVisible', 'isGrandChildTwoVisible']),
   },
