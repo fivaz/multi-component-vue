@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Child two is open</h1>
+    <button @click="closeGrandChildTwo">close grand child two</button>
     <grand-child-two v-if="isGrandChildTwoVisible"/>
   </div>
 </template>
@@ -27,6 +28,9 @@ export default Vue.extend({
   methods: {
     openGrandChildTwo() {
       this.isGrandChildTwoVisible = true;
+    },
+    closeGrandChildTwo() {
+      this.isGrandChildTwoVisible = false;
     },
   },
 });
