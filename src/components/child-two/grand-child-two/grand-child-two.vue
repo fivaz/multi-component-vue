@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Grand Child three is open</h2>
+    <h2>Grand Child two is open</h2>
     <ol>
       <li v-for="item in bar" :key="item">{{ item }}</li>
     </ol>
@@ -11,7 +11,7 @@
 import Vue from 'vue';
 import EventHandler from '@/utils/EventHandler.vue';
 
-const name = 'grand-child-three';
+const name = 'grand-child-two';
 
 export default Vue.extend({
   name,
@@ -19,11 +19,11 @@ export default Vue.extend({
   data(){
     return {
       name,
-      bar: [] as string[],
+      bar: [] as number[],
     }
   },
   methods: {
-    setBar(payload: string[]) {
+    setBar(payload: number[]) {
       this.bar = payload;
     }
   },

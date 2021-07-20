@@ -1,13 +1,13 @@
 <template>
   <div>
     <h1>Child two is open</h1>
-    <grand-child-three v-if="isGrandChildThreeVisible"/>
+    <grand-child-two v-if="isGrandChildTwoVisible"/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import GranChildThree from './grand-child-three/grand-child-three.vue';
+import GranChildTwo from './grand-child-two/grand-child-two.vue';
 import EventHandler from '@/utils/EventHandler.vue';
 
 const name = 'child-two';
@@ -16,17 +16,17 @@ export default Vue.extend({
   name,
   mixins: [EventHandler],
   components: {
-    'grand-child-three': GranChildThree,
+    'grand-child-two': GranChildTwo,
   },
   data() {
     return {
       name,
-      isGrandChildThreeVisible: false,
+      isGrandChildTwoVisible: false,
     };
   },
   methods: {
-    openGrandChildThree() {
-      this.isGrandChildThreeVisible = true;
+    openGrandChildTwo() {
+      this.isGrandChildTwoVisible = true;
     },
   },
 });
